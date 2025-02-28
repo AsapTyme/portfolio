@@ -13,6 +13,25 @@
     transition: width 0.2s, height 0.2s, background-color 0.2s, opacity 0.2s;
     opacity: 0;
     mix-blend-mode: difference;
+    /* Fix for Chrome */
+    will-change: transform;
+    top: 0;
+    left: 0;
+}
+
+/* Hide default cursor when custom cursor is visible */
+body.cursor-active {
+    cursor: none !important;
+}
+
+/* Apply cursor: none to clickable elements */
+body.cursor-active a,
+body.cursor-active button,
+body.cursor-active input,
+body.cursor-active .project-card,
+body.cursor-active .bento-item,
+body.cursor-active textarea {
+    cursor: none !important;
 }
 
 .cursor-enlarged {

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectGrid = document.querySelector('.project-grid');
     let isFiltering = false;
     
-    // Interactive cursor follower
+    // Interactive cursor follower - fixed version
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
     document.body.appendChild(cursor);
@@ -11,40 +11,61 @@ document.addEventListener('DOMContentLoaded', function() {
     let cursorVisible = false;
     let cursorEnlarged = false;
 
-    // Mouse movement
+    // Mouse movement with explicit coordinates
     document.addEventListener('mousemove', e => {
-        if (cursorVisible) {
-            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        // Update cursor position with explicit coordinates
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+        
+        // Make cursor visible on first move
+        if (!cursorVisible) {
+            cursorVisible = true;
+            cursor.style.opacity = '1';
+            document.body.classList.add('cursor-active');
         }
     });
 
-    // Show/hide cursor
+    // Make sure cursor disappears when leaving the window
+    document.addEventListener('mouseout', () => {
+        cursorVisible = false;
+        cursor.style.opacity = '0';
+        document.body.classList.remove('cursor-active');
+    });
+
     document.addEventListener('mouseenter', () => {
         cursorVisible = true;
         cursor.style.opacity = '1';
-    });
-
-    document.addEventListener('mouseleave', () => {
-        cursorVisible = false;
-        cursor.style.opacity = '0';
+        document.body.classList.add('cursor-active');
     });
 
     // Cursor effects on interactive elements
     const clickables = document.querySelectorAll(
         'a, button, .project-card, .bento-item, input, textarea'
     );
-    
+
     clickables.forEach(el => {
-        el.addEventListener('mouseover', () => {
+        el.addEventListener('mouseenter', () => {
             cursor.classList.add('cursor-enlarged');
             cursorEnlarged = true;
         });
         
-        el.addEventListener('mouseout', () => {
+        el.addEventListener('mouseleave', () => {
             cursor.classList.remove('cursor-enlarged');
             cursorEnlarged = false;
         });
     });
+
+    // Disable custom cursor on mobile/touch devices
+    function isTouchDevice() {
+        return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
+    }
+
+    if (isTouchDevice()) {
+        cursor.style.display = 'none';
+        document.body.classList.remove('cursor-active');
+    }
 
     // Initialize skill bars with animation delay
     const skillBars = document.querySelectorAll('.skill-bar-fill');
@@ -179,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Front-End Developer',
             'UI/UX Enthusiast',
             'Web Designer',
-            'Swift Certified Developer',
+            'Swift Certified Developer'
         ];
         
         let currentPhraseIndex = 0;

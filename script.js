@@ -39,37 +39,43 @@ document.addEventListener('DOMContentLoaded', function() {
         setTheme(isDarkMode);
     });
     
-    // Mobile Menu Toggle
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
+    // Mobile Menu Toggle - fixed version
+    if (mobileMenuBtn && mobileMenu) {
+        // Initial state
+        mobileMenu.style.display = 'flex';
         
-        // Animate hamburger to X
-        const spans = mobileMenuBtn.querySelectorAll('span');
-        if (mobileMenu.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(0.3125rem, 0.375rem)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(0.3125rem, -0.375rem)';
-        } else {
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        }
-    });
-    
-    // Close mobile menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', () => {
+            // Toggle the active class for the mobile menu
+            mobileMenu.classList.toggle('active');
+            
+            // Animate hamburger to X
+            const spans = mobileMenuBtn.querySelectorAll('span');
             if (mobileMenu.classList.contains('active')) {
-                mobileMenu.classList.remove('active');
-                
-                // Reset hamburger icon
-                const spans = mobileMenuBtn.querySelectorAll('span');
+                spans[0].style.transform = 'rotate(45deg) translate(0.3125rem, 0.375rem)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(0.3125rem, -0.375rem)';
+            } else {
                 spans[0].style.transform = 'none';
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
             }
         });
-    });
+        
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    
+                    // Reset hamburger icon
+                    const spans = mobileMenuBtn.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        });
+    }
     
     // Project card hover effects
     const projectCards = document.querySelectorAll('.project-card');
