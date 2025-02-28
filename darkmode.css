@@ -1,0 +1,101 @@
+/* Dark Mode Styles */
+.dark-mode {
+    --primary-color: #6c63ff;
+    --secondary-color: #00c6ff;
+    --text-color: #e9eef2;
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --hover-color: rgba(255, 255, 255, 0.05);
+    --hover-text: #00c6ff;
+    --nav-background: rgba(18, 18, 18, 0.9);
+}
+
+/* Dark Mode Toggle Button Styles */
+.dark-mode #moon-icon {
+    display: none;
+}
+
+.dark-mode #sun-icon {
+    display: block;
+    color: #FFD700;
+}
+
+/* Dark Mode Specific Styles */
+.dark-mode .skill-list span {
+    background-color: rgba(108, 99, 255, 0.2);
+}
+
+.dark-mode .project-techs span {
+    background-color: rgba(108, 99, 255, 0.2);
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea {
+    background-color: #2d2d2d;
+    border-color: var(--border-color);
+}
+
+.dark-mode .mobile-menu-btn span {
+    background-color: var(--text-color);
+}
+
+.dark-mode #mode-switch {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced Visual Elements for Dark Mode */
+.dark-mode .bento-item {
+    background: linear-gradient(145deg, #1e1e1e, #252525);
+    border: 0.0625rem solid var(--border-color);
+}
+
+.dark-mode .contact-form {
+    background: linear-gradient(145deg, #1e1e1e, #252525);
+    border: 0.0625rem solid var(--border-color);
+}
+
+.dark-mode .hero h1 {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dark-mode .logo, 
+.dark-mode .footer-logo {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dark-mode footer {
+    background-color: #1a1a1a;
+}
+
+/* Subtle Glow Effects for Dark Mode */
+.dark-mode .bento-item:hover {
+    box-shadow: 0 0.5rem 2rem rgba(108, 99, 255, 0.15);
+}
+
+.dark-mode .project-card:hover {
+    box-shadow: 0 0.5rem 2rem rgba(108, 99, 255, 0.15);
+}
+
+.dark-mode .primary-btn {
+    box-shadow: 0 0.25rem 0.9375rem rgba(108, 99, 255, 0.2);
+}
+
+.dark-mode .primary-btn:hover {
+    box-shadow: 0 0.5rem 1.5625rem rgba(108, 99, 255, 0.3);
+}
+
+.dark-mode .skill-bar-container {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .skill-bar-fill {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
