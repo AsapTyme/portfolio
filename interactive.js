@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Front-End Developer',
             'UI/UX Enthusiast',
             'Web Designer',
-            'Problem Solver'
+            'Swift Certified Developer'
         ];
         
         let currentPhraseIndex = 0;

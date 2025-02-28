@@ -499,17 +499,45 @@ section {
 }
 
 /* Accomplishments Section */
-.accomplishments-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-}
-
 .accomplishments-grid .bento-item {
     display: flex;
     flex-direction: column;
+    min-height: 24rem; /* Set a minimum height for all boxes */
 }
 
 .accomplishments-grid h3 {
-    margin-bottom: var(--spacing-small);
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.accomplishment-date {
+    text-align: center;
+    font-style: italic;
+    color: var(--primary-color);
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    height: 1.5rem; /* Fixed height for the date area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accomplishments-grid ul {
+    list-style-position: inside;
+    margin-top: 0;
+    flex-grow: 1; /* Allow the list to grow and fill the space */
+}
+
+.accomplishments-grid li {
+    margin-bottom: 0.75rem;
+    text-align: left;
+    padding-left: 1rem;
+    text-indent: -1rem;
+}
+
+/* For dark mode */
+.dark-mode .accomplishment-date {
+    color: var(--secondary-color);
 }
 
 /* Contact Section */
