@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Variables for project filtering
+    const projectGrid = document.querySelector('.project-grid');
+    let isFiltering = false;
+    
     // Interactive cursor follower
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
@@ -72,12 +76,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Interactive project filter
+    // Interactive project filter with improved stability
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projects = document.querySelectorAll('.project-card');
-    
+
+    // Initialize all projects
+    projects.forEach(project => {
+        // Add a consistent height to avoid layout shifts
+        project.style.height = project.offsetHeight + 'px';
+    });
+
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
+            // Prevent interactions during filtering
+            if (isFiltering) return;
+            isFiltering = true;
+            
+            // Disable 3D effects during filtering
+            projectGrid.classList.add('filtering-active');
+            
             // Update active button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
@@ -86,26 +103,72 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Show/hide projects based on filter
             projects.forEach(project => {
-                if (filter === 'all') {
+                // Get the original height for the project
+                const originalHeight = project.getAttribute('data-height') || project.offsetHeight;
+                if (!project.getAttribute('data-height')) {
+                    project.setAttribute('data-height', originalHeight);
+                }
+                
+                if (filter === 'all' || project.getAttribute('data-category') === filter) {
+                    // Show project with a fade
+                    project.style.height = originalHeight + 'px';
+                    project.style.margin = '';
+                    project.style.opacity = '1';
+                    project.style.visibility = 'visible';
+                    project.style.position = 'relative';
                     project.style.display = 'block';
-                    setTimeout(() => {
-                        project.style.opacity = '1';
-                        project.style.transform = 'translateY(0)';
-                    }, 100);
-                } else if (project.getAttribute('data-category') === filter) {
-                    project.style.display = 'block';
-                    setTimeout(() => {
-                        project.style.opacity = '1';
-                        project.style.transform = 'translateY(0)';
-                    }, 100);
+                    // Reset transform to avoid conflict with tilt
+                    project.style.transform = 'perspective(1000px) translateY(-0.3125rem)';
                 } else {
+                    // Hide project with a fade
                     project.style.opacity = '0';
-                    project.style.transform = 'translateY(1.25rem)';
+                    project.style.transform = 'perspective(1000px) scale(0.95)';
+                    project.style.visibility = 'hidden';
+                    project.style.position = 'absolute';
+                    // Don't remove from flow immediately to prevent jarring shifts
                     setTimeout(() => {
+                        project.style.height = '0';
+                        project.style.margin = '0';
+                        project.style.padding = '0';
                         project.style.display = 'none';
                     }, 300);
                 }
             });
+
+            // Re-enable interactions after filtering is complete
+            setTimeout(() => {
+                isFiltering = false;
+                projectGrid.classList.remove('filtering-active');
+                projectGrid.classList.add('filtering-complete');
+                
+                // Remove the class after a short delay to ensure smooth transition
+                setTimeout(() => {
+                    projectGrid.classList.remove('filtering-complete');
+                }, 300);
+                
+                // Handle empty state
+                let visibleProjects = Array.from(projects).filter(project => 
+                    project.style.visibility !== 'hidden');
+                    
+                if (visibleProjects.length === 0) {
+                    // No projects visible - show a message
+                    if (!document.querySelector('.no-projects-message')) {
+                        const message = document.createElement('div');
+                        message.className = 'no-projects-message';
+                        message.textContent = 'No projects in this category yet. Check back soon!';
+                        message.style.gridColumn = '1 / -1';
+                        message.style.textAlign = 'center';
+                        message.style.padding = '2rem';
+                        projectGrid.appendChild(message);
+                    }
+                } else {
+                    // Remove message if it exists
+                    const message = document.querySelector('.no-projects-message');
+                    if (message) {
+                        message.remove();
+                    }
+                }
+            }, 600);
         });
     });
 
@@ -152,26 +215,90 @@ document.addEventListener('DOMContentLoaded', function() {
         typeEffect();
     }
 
-    // Interactive 3D tilt effect for project cards
+    // Throttle function to limit how often the mousemove handler fires
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+
+    // Improved 3D tilt effect for project cards
     const tiltCards = document.querySelectorAll('.project-card');
     
     tiltCards.forEach(card => {
-        card.addEventListener('mousemove', e => {
+        // Variables to control the effect
+        let isHovering = false;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+        
+        // Use requestAnimationFrame for smoother animation
+        let tiltAnimationFrame;
+        
+        const updateTilt = () => {
+            if (!isHovering || isFiltering) return;
+            
             const cardRect = card.getBoundingClientRect();
             const cardCenterX = cardRect.left + cardRect.width / 2;
             const cardCenterY = cardRect.top + cardRect.height / 2;
-            const mouseX = e.clientX - cardCenterX;
-            const mouseY = e.clientY - cardCenterY;
             
-            // Calculate rotation based on mouse position
-            const rotateX = (-mouseY / 10).toFixed(2);
-            const rotateY = (mouseX / 10).toFixed(2);
+            // Calculate distance from center (normalized from -1 to 1)
+            const normalizedX = (lastMouseX - cardCenterX) / (cardRect.width / 2);
+            const normalizedY = (lastMouseY - cardCenterY) / (cardRect.height / 2);
             
-            // Apply the transform
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            // Apply rotation with limits
+            // Reduce the max rotation angle and apply easing for smoother effect
+            const maxRotation = 5; // Maximum rotation in degrees (reduced from 10)
+            const rotateX = Math.max(Math.min(-normalizedY * maxRotation, maxRotation), -maxRotation).toFixed(2);
+            const rotateY = Math.max(Math.min(normalizedX * maxRotation, maxRotation), -maxRotation).toFixed(2);
+            
+            // Apply transform with easing
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            
+            // Request next frame
+            tiltAnimationFrame = requestAnimationFrame(updateTilt);
+        };
+        
+        // Throttled mousemove handler
+        const handleMouseMove = throttle(function(e) {
+            if (isFiltering) return;
+            
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+            
+            // If we're not already running the animation loop, start it
+            if (!tiltAnimationFrame) {
+                tiltAnimationFrame = requestAnimationFrame(updateTilt);
+            }
+        }, 16); // ~60fps
+        
+        card.addEventListener('mouseenter', () => {
+            if (isFiltering) return;
+            
+            isHovering = true;
+            // Reset any existing transform to ensure clean start
+            card.style.transition = 'transform 0.3s ease';
+            // Start the animation loop
+            tiltAnimationFrame = requestAnimationFrame(updateTilt);
         });
         
+        card.addEventListener('mousemove', handleMouseMove);
+        
         card.addEventListener('mouseleave', () => {
+            isHovering = false;
+            // Cancel the animation frame
+            if (tiltAnimationFrame) {
+                cancelAnimationFrame(tiltAnimationFrame);
+                tiltAnimationFrame = null;
+            }
+            // Smooth transition back to default state
+            card.style.transition = 'transform 0.5s ease';
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-0.3125rem)';
         });
     });
