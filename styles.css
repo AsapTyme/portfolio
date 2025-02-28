@@ -2,13 +2,14 @@
 :root {
     /* Light Mode Colors */
     --primary-color: #0077ff;
-    --secondary-color: #6c63ff;
+    --secondary-color: #a04df9;
     --text-color: #2c3e50;
-    --background-color: #ffffff;
-    --card-background: #f8f9fa;
-    --card-shadow: rgba(0, 0, 0, 0.05);
+    --background-color: #fbfdff;
+    --card-background: rgba(255, 255, 255, 0.75);
+    --card-shadow: rgba(31, 38, 135, 0.15);
+    --card-border: rgba(255, 255, 255, 0.4);
     --border-color: rgba(0, 0, 0, 0.1);
-    --hover-color: rgba(0, 0, 0, 0.02);
+    --hover-color: rgba(255, 255, 255, 0.3);
     --hover-text: #0077ff;
     --nav-background: rgba(255, 255, 255, 0.9);
 
@@ -39,6 +40,11 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     transition: background-color var(--transition-speed), color var(--transition-speed);
+    background-image: 
+        linear-gradient(120deg, rgba(0, 119, 255, 0.05) 0%, rgba(108, 99, 255, 0.05) 100%),
+        radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(108, 99, 255, 0.07) 0%, transparent 40%);
+    background-attachment: fixed;
 }
 
 img {
@@ -244,7 +250,7 @@ section {
     align-items: center;
     gap: var(--spacing-large);
     min-height: 100vh;
-    margin-top: 1em;
+    margin-top: 0;
     padding-top: 5rem;
 }
 
@@ -282,11 +288,12 @@ section {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     border: none;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
 }
 
 .primary-btn:hover {
     transform: translateY(-0.125rem);
-    box-shadow: 0 0.3125rem 0.9375rem rgba(108, 99, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5);
     color: white;
 }
 
@@ -377,14 +384,18 @@ section {
     background-color: var(--card-background);
     border-radius: var(--border-radius);
     padding: var(--spacing-medium);
-    box-shadow: 0 4px 20px var(--card-shadow);
+    box-shadow: 0 8px 32px var(--card-shadow);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
 }
 
 .bento-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px var(--card-shadow);
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(31, 38, 135, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .skill-list {
@@ -423,13 +434,17 @@ section {
     background-color: var(--card-background);
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 4px 20px var(--card-shadow);
+    box-shadow: 0 8px 32px var(--card-shadow);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px var(--card-shadow);
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(31, 38, 135, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .project-image {
@@ -499,6 +514,10 @@ section {
 }
 
 /* Accomplishments Section */
+.accomplishments-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
 .accomplishments-grid .bento-item {
     display: flex;
     flex-direction: column;
@@ -535,11 +554,6 @@ section {
     text-indent: -1rem;
 }
 
-/* For dark mode */
-.dark-mode .accomplishment-date {
-    color: var(--secondary-color);
-}
-
 /* Contact Section */
 .contact-container {
     display: grid;
@@ -565,7 +579,10 @@ section {
     background-color: var(--card-background);
     padding: var(--spacing-large);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 20px var(--card-shadow);
+    box-shadow: 0 8px 32px var(--card-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
 }
 
 .form-group {
@@ -584,7 +601,7 @@ section {
     padding: 0.75rem 0.9375rem;
     border: 0.0625rem solid var(--border-color);
     border-radius: var(--border-radius);
-    background-color: var(--background-color);
+    background-color: rgba(255, 255, 255, 0.5);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     transition: border-color var(--transition-speed);
@@ -601,6 +618,9 @@ footer {
     background-color: var(--card-background);
     padding: var(--spacing-medium) 0;
     margin-top: var(--spacing-large);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--card-border);
 }
 
 .footer-content {
@@ -653,6 +673,33 @@ footer {
     text-align: center;
     border-top: 1px solid var(--border-color);
     margin-top: var(--spacing-medium);
+}
+
+/* Enhanced glassmorphic elements */
+.word-cloud span {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.filter-btn {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+}
+
+/* Skill improvements */
+.skill-bar-container {
+    background-color: rgba(108, 99, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Responsive Styles */
@@ -768,4 +815,34 @@ footer {
     h2 {
         font-size: 2rem;
     }
+}
+
+/* Make sure dark mode is unaffected */
+.dark-mode {
+    background-image: none;
+}
+
+.dark-mode .bento-item,
+.dark-mode .project-card,
+.dark-mode .contact-form {
+    /* Keep existing dark mode styles */
+    background: linear-gradient(145deg, #1e1e1e, #252525);
+    border: 0.0625rem solid var(--border-color);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .accomplishment-date {
+    color: var(--secondary-color);
+}
+
+.dark-mode footer {
+    background-color: #1a1a1a;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
