@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="light-mode">
+    <!-- HEADER SECTION -->
     <header>
         <nav>
             <div class="logo">JP</div>
@@ -37,6 +38,7 @@
         </nav>
     </header>
 
+    <!-- MOBILE MENU -->
     <div class="mobile-menu">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
@@ -46,10 +48,11 @@
     </div>
 
     <main>
+        <!-- HERO SECTION -->
         <section class="hero">
             <div class="hero-content">
                 <h1>Justin Peretz</h1>
-                <h2>I'm a <span id="typing-text">Front-End Developer</span></h2>
+                <h2>I'm <span id="typing-text">Front-End Developer</span></h2>
                 <p>Building beautiful, functional, and scalable web experiences from Kansas.</p>
                 <div class="hero-cta">
                     <a href="#projects" class="primary-btn">View My Work</a>
@@ -63,6 +66,7 @@
             </div>
         </section>
 
+        <!-- ABOUT SECTION -->
         <section id="about" class="about">
             <h2>About Me</h2>
             <div class="about-content">
@@ -71,6 +75,7 @@
             </div>
         </section>
 
+        <!-- SKILLS SECTION -->
         <section id="skills" class="skills">
             <h2>My Skills</h2>
             <div class="word-cloud">
@@ -154,6 +159,7 @@
             </div>
         </section>
 
+        <!-- PROJECTS SECTION -->
         <section id="projects" class="projects">
             <h2>Featured Projects</h2>
             <div class="project-filters">
@@ -170,7 +176,7 @@
                     </div>
                     <div class="project-details">
                         <h3>Pending Changes...</h3>
-                        <p>Bare with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
+                        <p>Bear with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
                         <div class="project-techs">
                             <span>React</span>
                             <span>Tailwind</span>
@@ -190,7 +196,7 @@
                     </div>
                     <div class="project-details">
                         <h3>Pending Changes...</h3>
-                        <p>Bare with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
+                        <p>Bear with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
                         <div class="project-techs">
                             <span>Kotlin</span>
                             <span>Swift</span>
@@ -210,7 +216,7 @@
                     </div>
                     <div class="project-details">
                         <h3>Pending Changes...</h3>
-                        <p>Bare with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
+                        <p>Bear with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
                         <div class="project-techs">
                             <span>Figma</span>
                             <span>Prototyping</span>
@@ -222,47 +228,83 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Project 4 - Web - NEW CARD -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <!-- Placeholder styling handled by CSS -->
+                    </div>
+                    <div class="project-details">
+                        <h3>Pending Changes...</h3>
+                        <p>Bear with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
+                        <div class="project-techs">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="view-more">
                 <a href="https://github.com/AsapTyme" class="secondary-btn">View All Projects</a>
             </div>
         </section>
 
+        <!-- ACCOMPLISHMENTS SECTION -->
         <section id="accomplishments" class="accomplishments">
             <h2>Accomplishments</h2>
-            <div class="bento-grid accomplishments-grid">
-                <div class="bento-item skillsusa">
-                    <h3>SkillsUSA Competitions & Placements</h3>
+            <div class="project-grid accomplishments-grid">
+                <div class="bento-item skillsusa-regionals">
+                    <h3>SkillsUSA Regionals - 1st Place</h3>
+                    <p class="accomplishment-date">Received March 2024</p>
+                    <ul class="accomplishment-list">
+                        <li>Placed 1st in Web Development at the SkillsUSA Regional Competition</li>
+                        <li>Designed and developed a fully responsive website under time constraints</li>
+                        <li>Demonstrated proficiency in HTML, CSS, and JavaScript in a competitive environment</li>
+                        <li>Qualified for state-level competition with the highest score in the region</li>
+                    </ul>
+                </div>
+                
+                <div class="bento-item skillsusa-state">
+                    <h3>SkillsUSA State Competition</h3>
                     <p class="accomplishment-date">Received April 2024</p>
-                    <ul>
-                        <li>Competed vs fellow collegiate professionals at a state level in Web Design, placing 4th in the state of Kansas</li>
+                    <ul class="accomplishment-list">
+                        <li>Competed vs fellow collegiate professionals at state level in Web Design, placing 4th in Kansas</li>
                         <li>Completed multiple 8-hour coding sprints in a competitive proctored environment</li>
-                        <li>Participated in impromptu standups to showcase project progression and communication skills under pressure</li>
+                        <li>Participated in impromptu standups to showcase project progression under pressure</li>
+                        <li>Demonstrated advanced problem-solving and technical skills against top competitors</li>
                     </ul>
                 </div>
                 
-                <div class="bento-item eagle">
-                    <h3>Eagle Scout</h3>
-                    <p class="accomplishment-date">Received November 2018</p>
-                    <ul>
+                <div class="bento-item swift-cert">
+                    <h3>Apple Certified Swift Developer</h3>
+                    <p class="accomplishment-date">Received February 2024</p>
+                    <ul class="accomplishment-list">
+                        <li>Completed comprehensive Apple certification program for Swift development</li>
+                        <li>Mastered iOS development fundamentals and Swift programming language</li>
+                        <li>Built multiple functional iOS applications as part of the certification process</li>
+                        <li>Demonstrated proficiency in Apple's UI/UX design principles and implementation</li>
+                    </ul>
+                </div>
+                
+                <div class="bento-item scouting">
+                    <h3>Scouting Leadership</h3>
+                    <p class="accomplishment-date">Eagle Scout & NYLT Graduate/Staff</p>
+                    <ul class="accomplishment-list">
+                        <li>Achieved Eagle Scout rank (November 2018) with a permaculture garden project</li>
+                        <li>NYLT Graduate and 2x staff member (voted Time Magazine's best youth leadership course)</li>
                         <li>Utilized soft skills including Leadership, Punctuality, Teamwork, and Communication</li>
-                        <li>Project: Planned, fundraised, and built a self-sustainable permaculture garden for a local educational non-profit</li>
-                        <li>Showcased premier conditions for local flora and fauna in a controlled growth environment</li>
-                    </ul>
-                </div>
-                
-                <div class="bento-item nylt">
-                    <h3>National Youth Leadership Training (NYLT)</h3>
-                    <p class="accomplishment-date">Graduate and 2x staff member</p>
-                    <ul>
-                        <li>Program voted as Time Magazine's best national youth leadership course</li>
-                        <li>1 time participant, 2 time staff member</li>
-                        <li>Staffing opportunities contingent on high margin peer review and demonstration of exceptional leadership skills</li>
+                        <li>Selected for staff roles based on high margin peer reviews and leadership skills</li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <!-- CONTACT SECTION -->
         <section id="contact" class="contact">
             <h2>Get In Touch</h2>
             <div class="contact-container">
@@ -292,7 +334,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" required class="non-resizable"></textarea>
                         </div>
                         <button type="submit" class="primary-btn">Send Message</button>
                     </form>
@@ -301,6 +343,7 @@
         </section>
     </main>
 
+    <!-- FOOTER SECTION -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">JP</div>
@@ -322,6 +365,7 @@
         </div>
     </footer>
 
+    <!-- SCRIPTS -->
     <script src="script.js"></script>
     <script src="interactive.js"></script>
 </body>

@@ -197,10 +197,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const typingElement = document.getElementById('typing-text');
     if (typingElement) {
         const phrases = [
-            'Front-End Developer',
-            'UI/UX Enthusiast',
-            'Web Designer',
-            'Swift Certified Developer'
+            'a Front-end Developer',
+            'a UI/UX Enthusiast',
+            'a Web Designer',
+            'an Apple Certified Swift Developer'
         ];
         
         let currentPhraseIndex = 0;
