@@ -1167,3 +1167,168 @@ footer {
         transform: none !important;
     }
 }
+
+/* =============================================
+   COMPLETE GRID SYSTEM FIX
+============================================= */
+
+/* Reset all grid layouts to ensure no inheritance issues */
+.bento-grid,
+.project-grid,
+.accomplishments-grid {
+    display: grid !important;
+    width: 100% !important;
+}
+
+/* 1. SKILLS SECTION - 1x3 on desktop */
+.bento-grid.skills-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: var(--spacing-medium) !important;
+}
+
+/* Ensure each skills item takes full width */
+.bento-grid.skills-grid .bento-item {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* 2. PROJECTS SECTION - 2x2 on desktop */
+.project-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    gap: var(--spacing-large) !important;
+}
+
+/* Ensure each project card takes its full area */
+.project-grid .project-card {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* 3. ACCOMPLISHMENTS SECTION - 2x2 on desktop */
+.accomplishments-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    gap: var(--spacing-large) !important;
+}
+
+/* Ensure each accomplishment item takes its full area */
+.accomplishments-grid .bento-item {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* MOBILE LAYOUTS - All become single column */
+@media (max-width: 768px) {
+    /* Skills - 1x3 column on mobile */
+    .bento-grid.skills-grid {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(3, auto) !important; 
+    }
+    
+    /* Projects - 1x4 column on mobile */
+    .project-grid {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(4, auto) !important;
+    }
+    
+    /* Accomplishments - 1x4 column on mobile */
+    .accomplishments-grid {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(4, auto) !important;
+    }
+    
+    /* Fix any potential centration issues on mobile */
+    .bento-item,
+    .project-card {
+        max-width: 100% !important;
+        transform: none !important;
+    }
+}
+
+/* Fix for any combination issues where multiple grid classes are used */
+.project-grid.accomplishments-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: auto auto !important;
+}
+
+@media (max-width: 768px) {
+    .project-grid.accomplishments-grid {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: repeat(4, auto) !important;
+    }
+}
+
+/* Override any transforms that might affect grid items */
+@media (min-width: 769px) {
+    .project-card:hover,
+    .bento-item:hover {
+        transform: translateY(-7px) !important;
+    }
+}
+
+/* Fix for filter buttons not affecting grid layout */
+.filter-btn.active ~ .project-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+}
+
+@media (max-width: 768px) {
+    .filter-btn.active ~ .project-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Ensure project cards display correctly when filtered */
+.project-card[style*="display: block"] {
+    display: block !important;
+    width: 100% !important;
+}
+
+.project-details {
+    padding: var(--spacing-medium);
+}
+
+/* Increase spacing below project links */
+.project-links {
+    margin-bottom: var(--spacing-medium);
+}
+
+@media (max-width: 768px) {
+    .project-details {
+        padding-bottom: 2.5rem; 
+    }
+}
+
+/* Fix for project card padding on mobile */
+
+/* First, reset any conflicting padding definitions */
+.project-details {
+    padding: var(--spacing-medium) !important;
+}
+
+/* Add specific styling for the links area to create more space */
+.project-links {
+    margin-top: var(--spacing-medium) !important;
+    margin-bottom: var(--spacing-medium) !important;
+}
+
+/* Mobile breakpoint (overrides the above) */
+@media (max-width: 768px) {
+    .project-details {
+        /* Use important to override any other styles */
+        padding: var(--spacing-medium) var(--spacing-medium) 1.5rem var(--spacing-medium) !important;
+    }
+    
+    /* Add more margin below links on mobile */
+    .project-links {
+        margin-bottom: 1.5rem !important;
+    }
+}
+
+/* Make sure smaller screens don't reduce the padding */
+@media (max-width: 480px) {
+    .project-details {
+        /* Keep the large bottom padding */
+        padding: var(--spacing-medium) var(--spacing-medium) 1.5rem var(--spacing-medium) !important;
+    }
+}
