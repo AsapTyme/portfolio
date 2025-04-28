@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Prepare template parameters
             const templateParams = {
-                name: name,
+                user_name: name,
                 email: email,
                 message: message
             };
