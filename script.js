@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
     const contactForm = document.getElementById('contactForm');
     
+    // Initialize EmailJS
+    (function() {
+        emailjs.init("wFv-9VvYvbwSg69au"); // Replace with your actual User ID from EmailJS
+    })();
+    
     // Function to set theme based on preference
     function setTheme(isDark) {
         if (isDark) {
@@ -116,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on initial load
     checkReveal();
     
-    // Contact Form Submission
+    // Contact Form Submission with EmailJS
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -126,42 +131,63 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
             
-            // Simulating form submission
+            // UI feedback - show sending status
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
-            
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
             
-            // Simulate API call for form submission
-            setTimeout(() => {
-                // Show success message
-                const formGroups = document.querySelectorAll('.form-group');
-                formGroups.forEach(group => group.style.display = 'none');
-                
-                submitButton.style.display = 'none';
-                
-                const successMessage = document.createElement('div');
-                successMessage.className = 'success-message';
-                successMessage.innerHTML = `
-                    <h3>Message Sent!</h3>
-                    <p>Thanks for reaching out, ${name}. I'll get back to you as soon as possible.</p>
-                    <button class="secondary-btn">Send Another Message</button>
-                `;
-                
-                contactForm.appendChild(successMessage);
-                
-                // Reset form on "Send Another Message" click
-                const resetButton = successMessage.querySelector('button');
-                resetButton.addEventListener('click', () => {
-                    formGroups.forEach(group => group.style.display = 'block');
-                    submitButton.style.display = 'inline-block';
+            // Prepare template parameters
+            const templateParams = {
+                name: name,
+                email: email,
+                message: message
+            };
+            
+            // Send the email using EmailJS
+            emailjs.send('service_vuc1gct', 'template_xifx2w6', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Hide form fields
+                    const formGroups = document.querySelectorAll('.form-group');
+                    formGroups.forEach(group => group.style.display = 'none');
+                    submitButton.style.display = 'none';
+                    
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'success-message';
+                    successMessage.innerHTML = `
+                        <h3>Message Sent!</h3>
+                        <p>Thanks for reaching out, ${name}. I'll get back to you as soon as possible.</p>
+                        <button class="secondary-btn">Send Another Message</button>
+                    `;
+                    
+                    contactForm.appendChild(successMessage);
+                    
+                    // Reset form on "Send Another Message" click
+                    const resetButton = successMessage.querySelector('button');
+                    resetButton.addEventListener('click', () => {
+                        formGroups.forEach(group => group.style.display = 'block');
+                        submitButton.style.display = 'inline-block';
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalText;
+                        contactForm.reset();
+                        successMessage.remove();
+                    });
+                    
+                    // Trigger confetti effect if it exists
+                    if (typeof triggerConfetti === 'function' && !window.confettiTriggered) {
+                        triggerConfetti();
+                        window.confettiTriggered = true;
+                    }
+                })
+                .catch(function(error) {
+                    console.log('FAILED...', error);
                     submitButton.disabled = false;
                     submitButton.textContent = originalText;
-                    contactForm.reset();
-                    successMessage.remove();
+                    alert('Sorry, there was a problem sending your message. Please try again later.');
                 });
-            }, 1500);
         });
     }
     
