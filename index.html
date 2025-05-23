@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="darkmode.css">
     <link rel="stylesheet" href="interactive.css">
+    <link rel="stylesheet" href="geist-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="light-mode">
     <!-- HEADER SECTION -->
@@ -53,7 +54,7 @@
             <div class="hero-content">
                 <h1>Hi, I'm Justin.</h1>
                 <h2 id="and-im">And I'm <span id="typing-text">Front-End Developer</span></h2>
-                <p>Building beautiful, functional, and scalable web experiences from Kansas.</p>
+                <p>Building beautiful, functional, and scalable web experiences from Colorado.</p>
                 <div class="hero-cta">
                     <a href="#projects" class="primary-btn">View My Work</a>
                     <a href="#contact" class="secondary-btn">Get In Touch</a>
@@ -61,7 +62,7 @@
             </div>
             <div class="hero-image">
                 <div class="profile-image-container">
-                    <img src="./assets/default2.jpg" alt="Justin Peretz" class="profile-image">
+                    <img src="./assets/portfolioimg.jpg" alt="Justin Peretz" class="profile-image">
                 </div>
             </div>
         </section>
@@ -70,8 +71,8 @@
         <section id="about" class="about">
             <h2>About Me</h2>
             <div class="about-content">
-                <p>I'm a front-end web development student based in Kansas with a passion for creating clean, user-friendly interfaces. My background in leadership and project management through Scouting has given me the soft skills needed to collaborate effectively with teams and clients.</p>
-                <p>When I'm not coding, you can find me exploring new design trends, working on personal projects, or contributing to the local tech community.</p>
+                <p>I'm a Front-End Web Developer with my Associates of Applied Science in App Development and Emerging Technologies based in Colorado. Along with my skillset for creating clean, user-friendly interfaces, my background in leadership and project management through Scouting has given me the soft skills needed to collaborate effectively with teams and clients.</p>
+                <p>When I'm not coding, you can find me exploring new design trends, working on personal projects, learning new languages, building and upgrading my computers, hiking outside, managing my fantasy football team, and  waiting for the Green Bay Packers to win the Super Bowl.</p>
             </div>
         </section>
 
@@ -139,12 +140,17 @@
                     </div>
                 </div>
                 <div class="bento-item frameworks">
-                    <h3>Frameworks</h3>
+                    <h3>Frameworks & Tools</h3>
                     <div class="skill-list">
                         <span>React.js</span>
                         <span>Next.js</span>
                         <span>Angular</span>
                         <span>Tailwind CSS</span>
+                        <span>GSAP</span>
+                        <span>Unity</span>
+                        <span>Express</span>
+                        <span>Figma</span>
+                        <span>Unity</span>
                     </div>
                 </div>
                 <div class="bento-item experience">
@@ -172,19 +178,19 @@
                 <!-- Project 1 - Web -->
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <!-- Placeholder styling handled by CSS -->
+                        <img src="./assets/dailythought.png" alt="">
                     </div>
                     <div class="project-details">
-                        <h3>Pending Changes...</h3>
-                        <p>Bear with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
+                        <h3>Daily Thought</h3>
+                        <p>A minimalist thought blog built using GSAP animations and JavaScript. The Inspiration for this was fashion magazines, newspapers, horoscopes, and Anti-Design styles that felt profoundly meaningful with a taste of stoicism. I personally like the way the animations look on the homepage. </p>
                         <div class="project-techs">
-                            <span>Next.js</span>
-                            <span>Tailwind</span>
-                            <span>TypeScript</span>
+                            <span>GSAP</span>
+                            <span>Javascript</span>
+                            <span>HTML</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                            <a href="https://github.com/AsapTyme/DailyThought" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://asaptyme.github.io/DailyThought/" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
                         </div>
                     </div>
                 </div>
@@ -192,18 +198,18 @@
                 <!-- Project 2 - Mobile -->
                 <div class="project-card" data-category="mobile">
                     <div class="project-image">
-                        <!-- Placeholder styling handled by CSS -->
+                        <img src="./assets/pokedex.png" alt="">
                     </div>
                     <div class="project-details">
-                        <h3>Pending Changes...</h3>
-                        <p>Bear with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
+                        <h3>Pokédex App</h3>
+                        <p>Bear with me, this one is still going through approval on Testflight. It uses the Pokemon API v2 to call data and create a real life Pokédex. The repository is public, but the code is in swift, so this is best viewed through Xcode.</p>
                         <div class="project-techs">
                             <span>Swift</span>
                             <span>TestFlight</span>
                             <span>SwiftUI</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://github.com/AsapTyme/PokedexApp" class="project-link"><i class="fab fa-github"></i> Code</a>
                             <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
                         </div>
                     </div>
@@ -212,19 +218,18 @@
                 <!-- Project 3 - UI/UX -->
                 <div class="project-card" data-category="ui">
                     <div class="project-image">
-                        <!-- Placeholder styling handled by CSS -->
+                        <img src="./assets/petsrus.png" alt="">
                     </div>
                     <div class="project-details">
-                        <h3>Pending Changes...</h3>
-                        <p>Bear with me, I am still working on this portfolio and working on getting my projects hosted and polished. There will be something here soon!</p>
+                        <h3>Pets R Us</h3>
+                        <p>This was an early project I led on for school, a mobile app design of a platform to adopt animals from shelters. It was my first time designing a UI for a mobile app, and I really enjoyed the process.</p>
                         <div class="project-techs">
                             <span>Figma</span>
                             <span>Prototyping</span>
                             <span>UI Design</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> Designs</a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Case Study</a>
+                            <a href="https://www.figma.com/design/G89bQgBUjUIKOrxNv8csgU/pwuppy-dawgs?node-id=0-1&t=fzKeiPtR6FTpWRR2-1" class="project-link"><i class="fab fa-figma"></i> Design</a>
                         </div>
                     </div>
                 </div>
@@ -232,19 +237,19 @@
                 <!-- Project 4 - Web - NEW CARD -->
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <!-- Placeholder styling handled by CSS -->
+                        <img src="./assets/stratosai.png" alt="">
                     </div>
                     <div class="project-details">
                         <h3>Stratos AI</h3>
-                        <p>An April Fool's project for my professor, Stratos AI is a simple satire site that makes fun of the uselessness of tech bros pushing you to buy or use their SaaS AI services.</p>
+                        <p>An April Fool's project for my professor, Stratos AI is a simple satire site that makes fun of the uselessness of tech bros pushing you to buy or use their SaaS services. Includes a "Code Roaster" for if you think you're any better than your peers...</p>
+                         <div class="project-links">
+                            <a href="https://github.com/AsapTyme/StratosAI" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://asaptyme.github.io/StratosAI/" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
                         <div class="project-techs">
                             <span>HTML</span>
                             <span>CSS</span>
                             <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/AsapTyme/StratosAI" class="project-link"><i class="fab fa-github"></i> Code</a>
-                            <a href="https://asaptyme.github.io/StratosAI/" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
                         </div>
                     </div>
                 </div>
@@ -259,13 +264,13 @@
             <h2>Accomplishments</h2>
             <div class="project-grid accomplishments-grid">
                 <div class="bento-item skillsusa-regionals">
-                    <h3>SkillsUSA Regionals - 1st Place</h3>
-                    <p class="accomplishment-date">Received March 2024</p>
+                    <h3>Associate of Applied Science</h3>
+                    <p class="accomplishment-date">Received May 2025</p>
                     <ul class="accomplishment-list">
-                        <li>Placed 1st in Web Development at the SkillsUSA Regional Competition</li>
-                        <li>Designed and developed a fully responsive website under time constraints</li>
+                        <li>Graduated from a competitive technical coding program with honors  earning a degree in App Development and Emerging Technologies</li>
+                        <li>Solo built multiple full stack web applications earning the "Best Overall Projects" award in comparison against my peers.</li>
                         <li>Demonstrated proficiency in HTML, CSS, and JavaScript in a competitive environment</li>
-                        <li>Qualified for state-level competition with the highest score in the region</li>
+                        <li>Proved proficiency in advanced problem-solving and technical skills using frameworks and tools such as React, Next.js, and Angular.</li>
                     </ul>
                 </div>
                 
@@ -307,9 +312,9 @@
         <!-- CONTACT SECTION -->
         <section id="contact" class="contact">
             <h2>Get In Touch</h2>
+            <h5>Have a project in mind, a job offer, or want to chat? <br> Feel free to reach out!</h5>
             <div class="contact-container">
                 <div class="contact-info">
-                    <p>Have a project in mind or want to chat? Feel free to reach out!</p>
                     <div class="contact-links">
                         <a href="mailto:your.email@example.com" class="contact-link">
                             <i class="fas fa-envelope"></i> justin.peretz@fhnw.edu

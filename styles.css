@@ -5,7 +5,9 @@
 @font-face {
     font-family: 'Acorn';
     src: url(./assets/acorn.ttf);
+    
 }
+
 :root {
     /* Light Mode Colors */
     --primary-color: #0077ff;
@@ -80,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-family: 'Acorn', sans-serif;
+    font-family: 'Lora', sans-serif;
     font-size: 3.5rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
@@ -94,7 +96,7 @@ h1 {
 }
 
 h2 {
-    font-family: 'Acorn', sans-serif;
+    font-family: 'Lora', sans-serif;
     font-size: 2.5rem;
     position: relative;
     display: inline-block;
@@ -513,6 +515,7 @@ section {
     flex-wrap: wrap;
     gap: 0.625rem;
     margin-top: var(--spacing-small);
+    justify-content: center;;
 }
 
 .skill-list span {
@@ -522,11 +525,20 @@ section {
     padding: 0.3125rem 0.75rem;
     font-size: 0.9rem;
     font-weight: 500;
+    justify-content: space-around;
 }
 
 .bento-item ul {
     list-style-position: inside;
     margin-top: var(--spacing-small);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    list-style-type: none;
+    margin-top: 3em;
+    color: var(--primary-color);
+    font-weight: 500;
+    
 }
 
 .bento-item li {
@@ -609,6 +621,8 @@ section {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
@@ -629,10 +643,10 @@ section {
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s;
+    border-radius: 0;
 }
 
 .project-image::after {
-    content: "Project Placeholder";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -998,7 +1012,7 @@ footer {
         justify-content: center;
     }
     
-    h2 {
+    h2, h5 {
         text-align: center;
         width: 100%;
         display: block;
@@ -1094,7 +1108,6 @@ footer {
         flex-wrap: nowrap;
         overflow-x: auto;
         padding-bottom: 0.5rem;
-        justify-content: flex-start;
         -webkit-overflow-scrolling: touch;
     }
     

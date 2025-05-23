@@ -200,7 +200,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'a Front-end Developer',
             'a UI/UX Enthusiast',
             'a Web Designer',
-            'an Apple Certified Swift Developer'
+            'Apple Certified',
+            'an Eagle Scout',
         ];
         
         let currentPhraseIndex = 0;
